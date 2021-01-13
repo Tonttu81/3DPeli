@@ -16,16 +16,50 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
     CharacterController charController;
+    CameraScript cameraScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        cameraScript = GetComponent<CameraScript>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        // Jos hahmon kamera on käytössä, pelaaja voi liikkua
+        if (cameraScript.usingCamera)
+        {
+            Move();
+        }
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            Jump();
+        }
+
+        Gravity();        
+    }
+
+    private void FixedUpdate()
+    {
+        
+    }
+
+    void Move()
+    {
+        Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
+        charController.Move(movement * movementSpeed * Time.deltaTime);
+    }
+
+    void Jump()
+    {
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    void Gravity()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -34,21 +68,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
-        charController.Move(movement * movementSpeed * Time.deltaTime);
-
         velocity.y += gravity * Time.deltaTime;
 
         charController.Move(velocity * Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 }
