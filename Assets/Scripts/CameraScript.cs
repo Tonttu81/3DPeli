@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
     public float sensitivity;
 
     float xRotation = 0f;
+    float yRotation;
 
     public bool usingCamera;
 
@@ -17,6 +18,7 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        yRotation = transform.rotation.y;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -61,7 +63,15 @@ public class CameraScript : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.Rotate(Vector3.up * mouseX);
-        objectsCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        if (gameObject.tag == "Player")
+        {
+            transform.Rotate(Vector3.up * mouseX);
+            objectsCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        }
+        else
+        {
+            yRotation += mouseX;
+            transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        }
     }
 }

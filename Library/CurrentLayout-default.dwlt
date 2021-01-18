@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -112,10 +112,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 881, y: 492}
-  m_MaxSize: {x: 16006, y: 14042}
+  m_MinSize: {x: 879, y: 492}
+  m_MaxSize: {x: 16004, y: 14042}
   vertical: 0
-  controlID: 11846
+  controlID: 1541
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -137,10 +137,10 @@ MonoBehaviour:
     y: 0
     width: 1541
     height: 947
-  m_MinSize: {x: 605, y: 492}
-  m_MaxSize: {x: 12005, y: 14042}
+  m_MinSize: {x: 604, y: 492}
+  m_MaxSize: {x: 12004, y: 14042}
   vertical: 1
-  controlID: 11847
+  controlID: 1542
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,10 +163,10 @@ MonoBehaviour:
     y: 0
     width: 1541
     height: 596
-  m_MinSize: {x: 605, y: 221}
-  m_MaxSize: {x: 12005, y: 4021}
+  m_MinSize: {x: 604, y: 221}
+  m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-  controlID: 11848
+  controlID: 1543
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 251
     height: 596
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_MaximizeOnPlay: 1
+  m_MaximizeOnPlay: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
@@ -426,7 +426,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2ceeffff1cfbffff
+      m_ExpandedIDs: 6afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -486,9 +486,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -35.64807, y: -101.91067, z: 193.87791}
+    m_Target: {x: -9.857396, y: -114.267006, z: 190.56561}
     speed: 2
-    m_Value: {x: -35.64807, y: -101.91067, z: 193.87791}
+    m_Value: {x: -9.857396, y: -114.267006, z: 190.56561}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -534,13 +534,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.24051045, y: -0.087218806, z: 0.021704538, w: 0.96648}
+    m_Target: {x: 0.2714415, y: -0.05770458, z: 0.016306054, w: 0.96058893}
     speed: 2
-    m_Value: {x: 0.24202348, y: -0.084287114, z: 0.021109294, w: 0.966372}
+    m_Value: {x: 0.2714405, y: -0.057704374, z: 0.016305996, w: 0.9605855}
   m_Size:
-    m_Target: 129.79613
+    m_Target: 116.47313
     speed: 2
-    m_Value: 129.79613
+    m_Value: 116.47313
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -694,20 +694,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Joni\Desktop\Unity Projects\3DPeli
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 10350000
-    m_LastClickedID: 13584
-    m_ExpandedIDs: 000000000e35000000ca9a3b
+    m_SelectedIDs: 1e340000
+    m_LastClickedID: 13342
+    m_ExpandedIDs: 000000001834000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000484e0000544f0000c239000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -853,7 +853,7 @@ MonoBehaviour:
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: -4400
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
 --- !u!114 &21
 MonoBehaviour:
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -4400
+  m_LastSelectedObjectID: 13236
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
