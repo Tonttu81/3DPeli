@@ -12,9 +12,9 @@ public class CameraScript : MonoBehaviour
     public bool usingCamera;
 
     public GameObject objectsCamera;
-    public LayerMask cameraMask;
 
     RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,11 +32,14 @@ public class CameraScript : MonoBehaviour
 
             RotateCamera();
 
-            if (Physics.Raycast(new Ray(objectsCamera.transform.position, objectsCamera.transform.forward), out hit, 50f, cameraMask))
+            if (Input.GetMouseButtonDown(1) && Physics.Raycast(new Ray(objectsCamera.transform.position, objectsCamera.transform.forward), out hit, 50f))
             {
-                if (Input.GetMouseButtonDown(1))
+                if (hit.collider.tag == "Camera" || hit.collider.tag == "Player")
                 {
-                    Invoke("ChangeCamera", 0.01f);
+                    if (hit.collider.GetComponent<CameraScript>().enabled)
+                    {
+                        Invoke("ChangeCamera", 0.01f);
+                    }
                 }
             }
         }
