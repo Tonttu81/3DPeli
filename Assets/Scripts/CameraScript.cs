@@ -13,6 +13,8 @@ public class CameraScript : MonoBehaviour
 
     public GameObject objectsCamera;
 
+    public CameraScript playersCameraScript;
+
     RaycastHit hit;
 
     // Start is called before the first frame update
@@ -42,6 +44,16 @@ public class CameraScript : MonoBehaviour
                     }
                 }
             }
+
+            // Jos pelaaja painaa R, kamera palaa takaisin pelaajan hahmon kameraan
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (GetComponent<CameraScript>() != playersCameraScript)
+                {
+                    usingCamera = false;
+                    playersCameraScript.usingCamera = true;
+                }
+            }
         }
         else
         {
@@ -64,16 +76,17 @@ public class CameraScript : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        yRotation += mouseX;
 
         if (gameObject.tag == "Player")
         {
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
             transform.Rotate(Vector3.up * mouseX);
             objectsCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         }
         else
         {
-            yRotation += mouseX;
+            xRotation = Mathf.Clamp(xRotation, -20f, 90f);
             transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
     }

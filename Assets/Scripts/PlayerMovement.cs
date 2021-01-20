@@ -43,11 +43,6 @@ public class PlayerMovement : MonoBehaviour
         Gravity();        
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
-
     void Move()
     {
         Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
