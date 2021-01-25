@@ -8,7 +8,7 @@ public class CameraShootingScript : MonoBehaviour
     public float detection = 0f;
     public float cameraDetectionRange = 30f;
 
-
+    //public Light light;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -32,12 +32,15 @@ public class CameraShootingScript : MonoBehaviour
                     // hajottaa kameran
                     hit.collider.GetComponent<CameraScript>().enabled = false;
                     hit.collider.GetComponent<CameraShootingScript>().enabled = false;
+                    hit.collider.GetComponentInChildren<Light>().enabled = false;
                 }
             }
         }
         else // Kun kamera ei ole pelaajan käytössä
         {
             Vector3 dir = (player.transform.position - transform.position).normalized;
+
+            Debug.DrawRay(transform.position, dir * cameraDetectionRange, Color.red);
 
             RaycastHit scan;
             if (Physics.Raycast(new Ray(transform.position, dir), out scan, cameraDetectionRange))
