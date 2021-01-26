@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
-    ButtonScript buttonScript;
+    [SerializeField]float openPct;
+
+    public ButtonScript buttonScript;
 
     public Transform closedPoint;
     public Transform openPoint;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        buttonScript = GetComponentInParent<ButtonScript>();
-    }
-
     // Update is called once per frame
     void Update()
     {
+        transform.position = Vector3.Lerp(closedPoint.position, openPoint.position, openPct);
+
+        openPct = Mathf.Clamp(openPct, 0f, 1f);
+
         if (buttonScript.pressed)
         {
-            transform.position = openPoint.position;
+            openPct += Time.deltaTime;
         }
         else
         {
-            transform.position = closedPoint.position;
+            openPct -= Time.deltaTime;
         }
     }
 }
