@@ -9,6 +9,8 @@ public class CameraScript : MonoBehaviour
     float xRotation = 0f;
     float yRotation;
 
+    public bool inactive;
+
     public bool usingCamera;
 
     public GameObject objectsCamera;
@@ -38,7 +40,7 @@ public class CameraScript : MonoBehaviour
             {
                 if (hit.collider.tag == "Camera" || hit.collider.tag == "Player")
                 {
-                    if (hit.collider.GetComponent<CameraScript>().enabled)
+                    if (hit.collider.GetComponent<CameraScript>().inactive)
                     {
                         Invoke("ChangeCamera", 0.01f);
                     }
