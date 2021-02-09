@@ -29,18 +29,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Gravity();
+
         // Jos hahmon kamera on käytössä, pelaaja voi liikkua
         if (cameraScript.usingCamera)
         {
             Move();
-        }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump();
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                Jump();
+            }
         }
-
-        Gravity();        
     }
 
     void Move()

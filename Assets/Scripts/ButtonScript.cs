@@ -33,9 +33,9 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" || other.tag == "Camera")
+        if (other.tag == "Player" || other.tag == "Camera" || other.tag == "ControllableEnemy")
         {
             pressed = true;
         }
@@ -43,7 +43,7 @@ public class ButtonScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" || other.tag == "Camera")
+        if (other.tag == "Player" || other.tag == "Camera" || other.tag == "ControllableEnemy")
         {
             pressed = false;
         }

@@ -38,7 +38,11 @@ public class CameraScript : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1) && Physics.Raycast(new Ray(objectsCamera.transform.position, objectsCamera.transform.forward), out hit, 50f))
             {
-                if (hit.collider.tag == "Camera" || hit.collider.tag == "Player")
+                if (hit.collider.tag == "ControllableEnemy" && gameObject.tag == "Camera")
+                {
+                    Invoke("ChangeCamera", 0.01f);
+                }
+                else if (hit.collider.tag == "Camera" || hit.collider.tag == "Player")
                 {
                     if (hit.collider.GetComponent<CameraScript>().inactive)
                     {
@@ -80,7 +84,7 @@ public class CameraScript : MonoBehaviour
         xRotation -= mouseY;
         yRotation += mouseX;
 
-        if (gameObject.tag == "Player")
+        if (gameObject.tag == "Player" || gameObject.tag == "ControllableEnemy")
         {
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
             transform.Rotate(Vector3.up * mouseX);
@@ -88,7 +92,7 @@ public class CameraScript : MonoBehaviour
         }
         else
         {
-            xRotation = Mathf.Clamp(xRotation, -20f, 90f);
+            xRotation = Mathf.Clamp(xRotation, -50f, 90f);
             transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         }
     }
