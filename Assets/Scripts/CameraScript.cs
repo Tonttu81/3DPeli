@@ -15,13 +15,14 @@ public class CameraScript : MonoBehaviour
 
     public GameObject objectsCamera;
 
-    public CameraScript playersCameraScript;
+    CameraScript playersCameraScript;
 
     RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
     {
+        playersCameraScript = GameObject.FindGameObjectWithTag("Player").GetComponent<CameraScript>();
         yRotation = transform.rotation.y;
         Cursor.lockState = CursorLockMode.Locked;
     }

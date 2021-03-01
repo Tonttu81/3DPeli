@@ -11,6 +11,11 @@ public class DoorScript : MonoBehaviour
     public Transform closedPoint;
     public Transform openPoint;
 
+    private void Start()
+    {
+        closedPoint.transform.position = transform.position;
+    }
+
     // Update is called once per frame
     void Update()
     {
