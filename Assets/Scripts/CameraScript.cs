@@ -30,6 +30,14 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.T) && sensitivity > 5)
+        {
+            sensitivity -= 5f;
+        }
+        if (Input.GetKey(KeyCode.Y))
+        {
+            sensitivity += 5f;
+        }
         if (usingCamera)
         {
             // Aktivoi kameran

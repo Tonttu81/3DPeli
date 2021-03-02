@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
             {
                 RaycastHit punch;
 
-                if (Physics.Raycast(new Ray(cam.transform.position, cam.transform.forward), out punch, 2f));
+                if (Physics.Raycast(new Ray(cam.transform.position, cam.transform.forward), out punch, 2f))
                 {
                     if (punch.collider != null)
                     {
