@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     public float movementSpeed;
     public float gravity = -9.81f;
+    public float jumpHeight = 3f;
 
     bool isGrounded;
     Vector3 velocity;
@@ -29,6 +30,11 @@ public class EnemyScript : MonoBehaviour
         {
             Move();
         }
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            EnemyJump();
+        }
     }
 
     void Gravity()
@@ -49,5 +55,10 @@ public class EnemyScript : MonoBehaviour
     {
         Vector3 movement = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
         charController.Move(movement * movementSpeed * Time.deltaTime);
+    }
+
+    void EnemyJump()
+    {
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 }
