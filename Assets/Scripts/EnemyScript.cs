@@ -59,6 +59,9 @@ public class EnemyScript : MonoBehaviour
 
     void EnemyJump()
     {
-        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if (GetComponent<CameraScript>().usingCamera)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }   
     }
 }

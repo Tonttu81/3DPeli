@@ -7,8 +7,10 @@ public class SecurityCameraScript : MonoBehaviour
 {
     public bool disabled;
 
+    public bool detected;
     public float detection = 0f;
-    public float cameraDetectionRange = 30f;
+    public float detectionRate;
+    
 
     public ElectricalBoxScript electricalBoxScript;
 
@@ -25,6 +27,41 @@ public class SecurityCameraScript : MonoBehaviour
     {
         if (!disabled)
         {
+            if (detected)
+            {
+                detection += detectionRate * Time.deltaTime;
+                if (detection > 100)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+            }
+            else
+            {
+                if (detection > 0)
+                {
+                    detection -= detectionRate * Time.deltaTime;
+                }
+            }
+        }
+    }
+}
+
+/* Vanhoja scriptejä
+            // Jos pelaaja left klikkaa kameralla vihollista
+            RaycastHit hit;
+            if (Input.GetMouseButtonDown(0) && Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 50f))
+            {
+                if (hit.collider.tag == "Camera")
+                {
+                    // hajottaa kameran
+                    hit.collider.GetComponent<CameraScript>().enabled = false;
+                    hit.collider.GetComponent<SecurityCameraScript>().enabled = false;
+                    hit.collider.GetComponentInChildren<Light>().enabled = false;
+                }
+            }
+            */
+
+/* public float cameraDetectionRange = 30f;
             Vector3 dir = (player.transform.position - transform.position).normalized;
 
             Debug.DrawRay(transform.position, dir * cameraDetectionRange, Color.red);
@@ -46,23 +83,6 @@ public class SecurityCameraScript : MonoBehaviour
                     {
                         detection -= 15 * Time.deltaTime;
                     }
-                }
-            }
-        }
-    }
-}
-
-/* Toisten kameroiden hajottaminen, älä koske
-            // Jos pelaaja left klikkaa kameralla vihollista
-            RaycastHit hit;
-            if (Input.GetMouseButtonDown(0) && Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 50f))
-            {
-                if (hit.collider.tag == "Camera")
-                {
-                    // hajottaa kameran
-                    hit.collider.GetComponent<CameraScript>().enabled = false;
-                    hit.collider.GetComponent<SecurityCameraScript>().enabled = false;
-                    hit.collider.GetComponentInChildren<Light>().enabled = false;
                 }
             }
             */
