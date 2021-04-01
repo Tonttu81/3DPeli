@@ -32,7 +32,7 @@ public class SecurityCameraScript : MonoBehaviour
                 detection += detectionRate * Time.deltaTime;
                 if (detection > 100)
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    GlobalScript.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
             }
             else
