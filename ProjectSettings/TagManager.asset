@@ -8,6 +8,8 @@ TagManager:
   - ElectricalBox
   - ControllableEnemy
   - FadeObject
+  - Canvas
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

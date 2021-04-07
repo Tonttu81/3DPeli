@@ -8,7 +8,8 @@ public class SceneSwitch : MonoBehaviour
    
   void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
+        Cursor.lockState = CursorLockMode.None;
     }
 
 }

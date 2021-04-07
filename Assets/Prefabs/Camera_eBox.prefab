@@ -106,8 +106,10 @@ MonoBehaviour:
   disabled: 0
   detected: 0
   detection: 0
-  detectionRate: 10
+  detectionRate: 30
   electricalBoxScript: {fileID: 0}
+  exclamationMarkPrefab: {fileID: 2563025002272238054, guid: 739174c6551508a41b7804c6f0eebe9b,
+    type: 3}
 --- !u!1 &5410204614667613589
 GameObject:
   m_ObjectHideFlags: 0

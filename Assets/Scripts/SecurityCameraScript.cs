@@ -10,9 +10,13 @@ public class SecurityCameraScript : MonoBehaviour
     public bool detected;
     public float detection = 0f;
     public float detectionRate;
-    
+    float gb;
 
     public ElectricalBoxScript electricalBoxScript;
+
+    GameObject canvas;
+    public GameObject exclamationMarkPrefab;
+    GameObject exclamationMark;
 
     GameObject player;
 
@@ -20,6 +24,7 @@ public class SecurityCameraScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        canvas = GameObject.FindGameObjectWithTag("Canvas");    
     }
 
     // Update is called once per frame
@@ -29,6 +34,12 @@ public class SecurityCameraScript : MonoBehaviour
         {
             if (detected)
             {
+                if (exclamationMark == null)
+                {
+                    exclamationMark = Instantiate(exclamationMarkPrefab, new Vector3(transform.position.x, transform.position.y - 2f, transform.position.z), Quaternion.identity, canvas.transform);
+                    gb = 1;
+                }
+                gb -= detectionRate / 100 * Time.deltaTime;
                 detection += detectionRate * Time.deltaTime;
                 if (detection > 100)
                 {
@@ -40,7 +51,28 @@ public class SecurityCameraScript : MonoBehaviour
                 if (detection > 0)
                 {
                     detection -= detectionRate * Time.deltaTime;
+                    gb += detectionRate / 100 * Time.deltaTime;
                 }
+                else
+                {
+                    if (exclamationMark != null)
+                    {
+                        Destroy(exclamationMark.gameObject);
+                    }
+                }
+            }
+
+            if (exclamationMark != null)
+            {
+                exclamationMark.transform.LookAt(player.transform.position);
+                exclamationMark.GetComponent<SpriteRenderer>().color = new Color(1, gb, gb);
+            }
+        }
+        else
+        {
+            if (exclamationMark != null)
+            {
+                Destroy(exclamationMark.gameObject);
             }
         }
     }

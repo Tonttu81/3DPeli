@@ -15,13 +15,18 @@ public class CameraScript : MonoBehaviour
 
     public GameObject objectsCamera;
 
+    public GameObject model;
+
     CameraScript playersCameraScript;
+
+    PauseMenu pauseMenu;
 
     RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
     {
+        pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
         playersCameraScript = GameObject.FindGameObjectWithTag("Player").GetComponent<CameraScript>();
         yRotation = transform.rotation.y;
         Cursor.lockState = CursorLockMode.Locked;
@@ -30,16 +35,15 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.T) && sensitivity > 5)
-        {
-            sensitivity -= 5f;
-        }
-        if (Input.GetKey(KeyCode.Y))
-        {
-            sensitivity += 5f;
-        }
+        sensitivity = pauseMenu.sensitivity;
+
         if (usingCamera)
         {
+            if (gameObject.tag == "Player" || gameObject.tag == "ControllableEnemy")
+            {
+                model.SetActive(false);
+            }
+
             // Aktivoi kameran
             objectsCamera.GetComponent<Camera>().enabled = enabled;
 
@@ -72,6 +76,11 @@ public class CameraScript : MonoBehaviour
         }
         else
         {
+            if (gameObject.tag == "Player" || gameObject.tag == "ControllableEnemy")
+            {
+                model.SetActive(true);
+            }
+
             // Ottaa kameran pois käytöstä
             objectsCamera.GetComponent<Camera>().enabled = !enabled;
         }
